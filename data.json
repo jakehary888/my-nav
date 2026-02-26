@@ -1,15 +1,26 @@
 [
   {
-    "name": "常用工具",
+    "name": "主流 AI 对话",
     "items": [
-      { "title": "Google", "desc": "全球搜索", "url": "https://google.com" },
-      { "title": "GitHub", "desc": "代码托管", "url": "https://github.com" }
+      { "title": "ChatGPT", "desc": "OpenAI 旗舰产品，GPT-4o 智能巅峰", "url": "https://chatgpt.com" },
+      { "title": "Claude", "desc": "Anthropic 出品，文笔细腻，逻辑极强", "url": "https://claude.ai" },
+      { "title": "Gemini", "desc": "Google 原生多模态模型，支持超长上下文", "url": "https://gemini.google.com" },
+      { "title": "Kimi", "desc": "月之暗面出品，擅长超长文本分析与总结", "url": "https://kimi.moonshot.cn" }
     ]
   },
   {
-    "name": "我的收藏",
+    "name": "国产大模型",
     "items": [
-      { "title": "工具路", "desc": "你之前给我的那个导航站", "url": "https://tool.lu/nav/" }
+      { "title": "豆包", "desc": "字节跳动出品，响应极快，语音交互出色", "url": "https://www.doubao.com" },
+      { "title": "通义千问", "desc": "阿里出品，全能型选手，办公辅助利器", "url": "https://tongyi.aliyun.com" },
+      { "title": "DeepSeek", "desc": "国产之光，性价比极高，代码能力出众", "url": "https://www.deepseek.com" }
+    ]
+  },
+  {
+    "name": "AI 智能体平台",
+    "items": [
+      { "title": "扣子 (Coze)", "desc": "字节跳动 AI Bot 开发平台，零代码创建工具", "url": "https://www.coze.cn" },
+      { "title": "Poe", "desc": "集成全球主流 AI 的一站式聚合平台", "url": "https://poe.com" }
     ]
   }
 ]
