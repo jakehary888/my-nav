@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的 AI 智库导航</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        [v-cloak] { display: none; }
+        body { background-color: #f8fafc; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body>
+
+<div id="app" v-cloak class="min-h-screen flex">
+    <aside class="w-64 bg-white border-r border-slate-200 hidden md:flex flex-col sticky top-0 h-screen">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                AI Nav Pro
+            </h1>
+        </div>
+        <nav class="flex-1 px-4 space-y-2">
+            <a v-for="cat in categories" :key="cat" @click="scrollTo(cat)"
+               class="flex items-center px-4 py-3 text-slate-600 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-all cursor-pointer group">
+                <i class="fa-solid fa-layer-group mr-3 opacity-50 group-hover:opacity-100"></i>
+                {{ cat }}
+            </a>
+        </nav>
+        <div class="p-4 border-t border-slate-100 text-xs text-slate-400 text-center">
+            &copy; 2026 My Navigation
+        </div>
+    </aside>
+
+    <main class="flex-1 p-4 md:p-8">
+        <div class="max-w-4xl mx-auto mb-10">
+            <div class="relative group">
+                <input type="text" v-model="searchQuery" placeholder="搜索工具名称或描述..." 
+                       class="w-full px-6 py-4 bg-white border border-slate-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all pl-14">
+                <i class="fa-solid fa-magnifying-glass absolute left-5 top-5 text-slate-400 group-focus-within:text-blue-500 transition-colors"></i>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+            <div v-for="cat in filteredNav" :key="cat.name" :id="cat.name" class="mb-12">
+                <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center">
+                    <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-3"></span>
+                    {{ cat.name }}
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <a v-for="item in cat.items" :key="item.title" :href="item.url" target="_blank"
+                       class="group bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="w-10 h-10 bg-slate-50 rounded-lg flex items-center justify-center group-hover:bg-blue-50 transition-colors">
+                                <i class="fa-solid fa-bolt text-blue-500"></i>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-slate-300 text-xs group-hover:text-blue-400"></i>
+                        </div>
+                        <h3 class="font-semibold text-slate-800 group-hover:text-blue-600 transition-colors">{{ item.title }}</h3>
+                        <p class="text-sm text-slate-500 mt-2 line-clamp-2 leading-relaxed">
+                            {{ item.desc }}
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    const { createApp, ref, computed } = Vue;
+
+    createApp({
+        setup() {
+            const searchQuery = ref('');
+            
+            // --- 💡 你可以在这里添加你的导航链接 ---
+            const navData = ref([
+                {
+                    name: '大语言模型',
+                    items: [
+                        { title: 'ChatGPT', desc: 'OpenAI 旗下的最强 AI 模型', url: 'https://chat.openai.com' },
+                        { title: 'Claude 3.5', desc: 'Anthropic 的高智商模型，擅长写作', url: 'https://claude.ai' },
+                        { title: 'DeepSeek', desc: '国产之光，推理能力极强且开源', url: 'https://deepseek.com' }
+                    ]
+                },
+                {
+                    name: 'AI 绘图工具',
+                    items: [
+                        { title: 'Midjourney', desc: '目前最顶级的 AI 艺术生成工具', url: 'https://midjourney.com' },
+                        { title: 'Flux.1', desc: '新一代开源图像生成模型，文字渲染极佳', url: 'https://fal.ai' }
+                    ]
+                }
+            ]);
+
+            const categories = computed(() => navData.value.map(c => c.name));
+
+            const filteredNav = computed(() => {
+                if (!searchQuery.value) return navData.value;
+                return navData.value.map(cat => ({
+                    ...cat,
+                    items: cat.items.filter(item => 
+                        item.title.toLowerCase().includes(searchQuery.value.toLowerCase()) || 
+                        item.desc.toLowerCase().includes(searchQuery.value.toLowerCase())
+                    )
+                })).filter(cat => cat.items.length > 0);
+            });
+
+            const scrollTo = (id) => {
+                document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            };
+
+            return { navData, categories, searchQuery, filteredNav, scrollTo };
+        }
+    }).mount('#app');
+</script>
+</body>
+</html>
