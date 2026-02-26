@@ -19,3 +19,49 @@
     ]
   }
 ]
+[
+  {
+    "name": "顶级推理与对话",
+    "items": [
+      { "title": "ChatGPT", "desc": "GPT-4o/o1 官方对话入口", "url": "https://chatgpt.com/?model=gpt-4o" },
+      { "title": "DeepSeek R1", "desc": "国产最强开源推理模型，直达对话", "url": "https://chat.deepseek.com/" },
+      { "title": "Claude 3.5", "desc": "逻辑与编程最强助手，直达对话", "url": "https://claude.ai/new" },
+      { "title": "Gemini 2.0", "desc": "Google 多模态实时对话入口", "url": "https://gemini.google.com/app" }
+    ]
+  },
+  {
+    "name": "AI 搜索（即搜即答）",
+    "items": [
+      { "title": "Perplexity", "desc": "全球领先的 AI 搜索引擎，无广告", "url": "https://www.perplexity.ai/" },
+      { "title": "秘塔搜索", "desc": "国产最强 AI 搜索，长文总结极佳", "url": "https://metaso.cn/" },
+      { "title": "Grok", "desc": "马斯克 X 平台的 AI，信息最实时", "url": "https://x.com/i/grok" },
+      { "title": "Felo", "desc": "跨语言搜索神器，直接看外网信息", "url": "https://felo.ai/search" }
+    ]
+  },
+  {
+    "name": "国产全能平台",
+    "items": [
+      { "title": "Kimi", "desc": "超长文本分析，直达对话框", "url": "https://kimi.moonshot.cn/chat/" },
+      { "title": "豆包 (Doubao)", "desc": "字节跳动出品，响应最快", "url": "https://www.doubao.com/chat/" },
+      { "title": "扣子 (Coze)", "desc": "创建你自己的 AI Bot 智能体", "url": "https://www.coze.cn/home" },
+      { "title": "腾讯元宝", "desc": "腾讯出品，直连微信生态搜索", "url": "https://yuanbao.tencent.com/chat" }
+    ]
+  },
+  {
+    "name": "代码与编程助手",
+    "items": [
+      { "title": "Cursor", "desc": "目前最火的 AI 代码编辑器官网", "url": "https://www.cursor.com/" },
+      { "title": "v0.dev", "desc": "Vercel 出品，一句话生成前端网页", "url": "https://v0.dev/" },
+      { "title": "Artifacts", "desc": "Claude 渲染交互式组件的入口", "url": "https://claude.ai/artifacts" }
+    ]
+  },
+  {
+    "name": "多模态创作（影音）",
+    "items": [
+      { "title": "可灵 (Kling)", "desc": "国产最强 AI 视频生成平台", "url": "https://klingai.kuaishou.com/" },
+      { "title": "Suno V4", "desc": "AI 音乐生成，零门槛写歌", "url": "https://suno.com/create" },
+      { "title": "Flux.1", "desc": "新晋最强绘图模型预览", "url": "https://fal.ai/models/fal-ai/flux/dev" },
+      { "title": "Luma Dream", "desc": "高写实度的 AI 视频生成", "url": "https://lumalabs.ai/dream-machine" }
+    ]
+  }
+]
