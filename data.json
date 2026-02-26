@@ -1,26 +1,21 @@
 [
   {
-    "name": "主流 AI 对话",
+    "name": "直接对话 (Direct Chat)",
     "items": [
-      { "title": "ChatGPT", "desc": "OpenAI 旗舰产品，GPT-4o 智能巅峰", "url": "https://chatgpt.com" },
-      { "title": "Claude", "desc": "Anthropic 出品，文笔细腻，逻辑极强", "url": "https://claude.ai" },
-      { "title": "Gemini", "desc": "Google 原生多模态模型，支持超长上下文", "url": "https://gemini.google.com" },
-      { "title": "Kimi", "desc": "月之暗面出品，擅长超长文本分析与总结", "url": "https://kimi.moonshot.cn" }
+      { "title": "ChatGPT", "desc": "直达新对话窗口", "url": "https://chatgpt.com/?model=gpt-4o" },
+      { "title": "Claude", "desc": "直达对话输入框", "url": "https://claude.ai/new" },
+      { "title": "Gemini", "desc": "Google 官方对话页", "url": "https://gemini.google.com/app" },
+      { "title": "DeepSeek", "desc": "国产最强推理对话", "url": "https://chat.deepseek.com/" },
+      { "title": "Kimi", "desc": "直达对话框", "url": "https://kimi.moonshot.cn/chat/" }
     ]
   },
   {
-    "name": "国产大模型",
+    "name": "国产高效入口",
     "items": [
-      { "title": "豆包", "desc": "字节跳动出品，响应极快，语音交互出色", "url": "https://www.doubao.com" },
-      { "title": "通义千问", "desc": "阿里出品，全能型选手，办公辅助利器", "url": "https://tongyi.aliyun.com" },
-      { "title": "DeepSeek", "desc": "国产之光，性价比极高，代码能力出众", "url": "https://www.deepseek.com" }
-    ]
-  },
-  {
-    "name": "AI 智能体平台",
-    "items": [
-      { "title": "扣子 (Coze)", "desc": "字节跳动 AI Bot 开发平台，零代码创建工具", "url": "https://www.coze.cn" },
-      { "title": "Poe", "desc": "集成全球主流 AI 的一站式聚合平台", "url": "https://poe.com" }
+      { "title": "豆包", "desc": "直达字节对话流", "url": "https://www.doubao.com/chat/" },
+      { "title": "扣子 (Coze)", "desc": "个人 AI Bot 列表", "url": "https://www.coze.cn/space/" },
+      { "title": "通义千问", "desc": "阿里对话主入口", "url": "https://tongyi.aliyun.com/qianwen/" },
+      { "title": "元宝", "desc": "腾讯混元直达", "url": "https://yuanbao.tencent.com/chat" }
     ]
   }
 ]
