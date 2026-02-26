@@ -1,0 +1,15 @@
+[
+  {
+    "name": "常用工具",
+    "items": [
+      { "title": "Google", "desc": "全球搜索", "url": "https://google.com" },
+      { "title": "GitHub", "desc": "代码托管", "url": "https://github.com" }
+    ]
+  },
+  {
+    "name": "我的收藏",
+    "items": [
+      { "title": "工具路", "desc": "你之前给我的那个导航站", "url": "https://tool.lu/nav/" }
+    ]
+  }
+]
