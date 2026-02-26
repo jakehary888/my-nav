@@ -44,3 +44,9 @@
     ]
   }
 ]
+{
+  "name": "我的私人收藏",
+  "items": [
+    { "title": "知乎", "desc": "刚编的故事", "url": "https://zhihu.com" }
+  ]
+},
