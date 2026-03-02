@@ -3,115 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>月田意意的全能导航站</title>
+    <title>月田意意 · 灵感导航</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: "Microsoft YaHei", sans-serif; background: #f0f2f5; margin: 0; padding: 20px; color: #333; }
-        .container { max-width: 1000px; margin: auto; }
-        h1 { text-align: center; color: #1a73e8; margin-bottom: 30px; }
-        
-        /* 分类区块样式 */
-        .category { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        .category h2 { border-left: 5px solid #1a73e8; padding-left: 15px; margin-top: 0; font-size: 1.25rem; color: #1a73e8; }
-        
-        /* 链接网格布局 */
-        .links { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 15px; }
-        .links a { 
-            text-decoration: none; 
-            color: #444; 
-            background: #fff; 
-            padding: 12px 8px; 
-            border-radius: 8px; 
-            text-align: center; 
-            transition: all 0.2s ease; 
-            border: 1px solid #e0e0e0;
-            font-size: 0.95rem;
-            display: block;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        /* 鼠标悬停效果 */
-        .links a:hover { 
-            background: #1a73e8; 
-            color: #fff; 
-            border-color: #1a73e8; 
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(26,115,232,0.3);
-        }
-
-        /* 手机端适配 */
-        @media (max-width: 600px) {
-            .links { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
-        }
+        body { font-family: 'Inter', 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+        .card-hover:hover { transform: translateY(-3px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .section-title::after { content: ''; display: block; width: 30px; height: 3px; background: #3b82f6; margin-top: 4px; border-radius: 2px; }
+        .badge-cn { background-color: #fee2e2; color: #ef4444; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; }
+        .badge-intl { background-color: #dbeafe; color: #3b82f6; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>🎬 月田意意视频导航</h1>
+<body class="bg-gray-50 text-gray-800">
 
-        <div class="category">
-            <h2>综合长视频平台 (国内)</h2>
-            <div class="links">
-                <a href="https://www.iqiyi.com" target="_blank">爱奇艺</a>
-                <a href="https://v.qq.com" target="_blank">腾讯视频</a>
-                <a href="https://www.youku.com" target="_blank">优酷视频</a>
-                <a href="https://www.mgtv.com" target="_blank">芒果 TV</a>
-                <a href="https://www.bilibili.com" target="_blank">哔哩哔哩 (B站)</a>
-                <a href="https://www.acfun.cn" target="_blank">AcFun (A站)</a>
-                <a href="https://tv.sohu.com" target="_blank">搜狐视频</a>
-                <a href="https://www.miguvideo.com" target="_blank">咪咕视频</a>
+    <aside class="hidden lg:flex flex-col w-64 h-screen fixed left-0 top-0 bg-white border-r border-gray-100 p-6 z-50">
+        <h1 class="text-xl font-bold mb-10 text-blue-600 tracking-tighter">月田意意 · 导航</h1>
+        <nav class="space-y-4 text-sm font-medium text-gray-500">
+            <a href="#video" class="block hover:text-blue-500 transition-colors">🎬 视频网站</a>
+            <a href="#creator" class="block hover:text-blue-500 transition-colors">✍️ 创作账号</a>
+            <a href="#aimodel" class="block hover:text-blue-500 transition-colors">🧠 AI 模型</a>
+            <a href="#aivideo" class="block hover:text-blue-500 transition-colors">🎥 视频生成</a>
+            <a href="#music" class="block hover:text-blue-500 transition-colors">🎵 音乐网站</a>
+            <a href="#stock" class="block hover:text-blue-500 transition-colors">🎞️ 影视素材</a>
+            <a href="#data" class="block hover:text-blue-500 transition-colors">📊 数据导航</a>
+            <a href="#book" class="block hover:text-blue-500 transition-colors">📚 读书分类</a>
+        </nav>
+    </aside>
+
+    <main class="lg:ml-64 p-4 lg:p-12">
+        
+        <header class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">灵感与效率导航</h2>
+            <p class="text-gray-400 mt-2 font-light">精心整理的全球优质资源入口</p>
+        </header>
+
+        <section id="video" class="mb-16">
+            <h3 class="section-title text-xl font-bold mb-6 flex items-center">🎬 视频网站</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase flex items-center"><span class="badge-cn mr-2">DOMESTIC</span> 国内平台</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://www.iqiyi.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">爱奇艺</a>
+                        <a href="https://v.qq.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">腾讯视频</a>
+                        <a href="https://www.youku.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">优酷</a>
+                        <a href="https://www.mgtv.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">芒果 TV</a>
+                        <a href="https://www.bilibili.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center font-semibold">Bilibili</a>
+                        <a href="https://www.acfun.cn" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center font-semibold text-red-400">AcFun</a>
+                        <a href="https://www.douyin.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">抖音</a>
+                        <a href="https://www.ixigua.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">西瓜视频</a>
+                        <a href="https://tv.cctv.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">央视网</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase flex items-center"><span class="badge-intl mr-2">GLOBAL</span> 国外平台</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://www.youtube.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center font-semibold text-red-600">YouTube</a>
+                        <a href="https://www.netflix.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">Netflix</a>
+                        <a href="https://www.disneyplus.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">Disney+</a>
+                        <a href="https://www.primevideo.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center text-xs">Amazon Prime</a>
+                        <a href="https://www.tiktok.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">TikTok</a>
+                        <a href="https://www.twitch.tv" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">Twitch</a>
+                        <a href="https://www.ted.com/talks" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">TED Talks</a>
+                        <a href="https://www.vimeo.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center text-xs">Vimeo</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="category">
-            <h2>短视频 / 中视频</h2>
-            <div class="links">
-                <a href="https://www.douyin.com" target="_blank">抖音</a>
-                <a href="https://www.kuaishou.com" target="_blank">快手</a>
-                <a href="https://www.ixigua.com" target="_blank">西瓜视频</a>
-                <a href="https://haokan.baidu.com" target="_blank">好看视频</a>
-                <a href="https://www.tiktok.com" target="_blank">TikTok</a>
+        <section id="creator" class="mb-16">
+            <h3 class="section-title text-xl font-bold mb-6">✍️ 创作账号后台</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest flex items-center uppercase"><span class="badge-cn mr-2">CN CREATOR</span> 国内后台</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
+                        <a href="https://mp.weixin.qq.com" target="_blank" class="bg-green-50 p-3 rounded text-center card-hover border border-green-100">微信公众平台</a>
+                        <a href="https://creator.douyin.com" target="_blank" class="glass p-3 rounded text-center card-hover border border-gray-100">抖音创作者</a>
+                        <a href="https://member.bilibili.com" target="_blank" class="glass p-3 rounded text-center card-hover border border-gray-100 font-medium">B站创作中心</a>
+                        <a href="https://creator.xiaohongshu.com" target="_blank" class="bg-red-50 p-3 rounded text-center card-hover border border-red-100">小红书中心</a>
+                        <a href="https://mp.toutiao.com" target="_blank" class="glass p-3 rounded text-center card-hover border border-gray-100">头条/西瓜</a>
+                        <a href="https://baijiahao.baidu.com" target="_blank" class="glass p-3 rounded text-center card-hover border border-gray-100 text-xs">百家号</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest flex items-center uppercase"><span class="badge-intl mr-2">GLOBAL CREATOR</span> 海外后台</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
+                        <a href="https://studio.youtube.com" target="_blank" class="glass p-3 rounded text-center card-hover border border-gray-100">YouTube Studio</a>
+                        <a href="https://business.facebook.com" target="_blank" class="glass p-3 rounded text-center card-hover border border-gray-100 text-xs">Meta Business</a>
+                        <a href="https://studio.x.com" target="_blank" class="glass p-3 rounded text-center card-hover border border-gray-100">X Creator</a>
+                        <a href="https://medium.com/me/stats" target="_blank" class="glass p-3 rounded text-center card-hover border border-gray-100">Medium Partner</a>
+                        <a href="https://substack.com/dashboard" target="_blank" class="glass p-3 rounded text-center card-hover border border-gray-100">Substack</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="category">
-            <h2>影视 / 官方媒体</h2>
-            <div class="links">
-                <a href="https://tv.cctv.com" target="_blank">央视网</a>
-                <a href="https://www.1905.com" target="_blank">1905 电影网</a>
-                <a href="https://www.yangshipin.cn" target="_blank">央视频</a>
+        <section id="aimodel" class="mb-16">
+            <h3 class="section-title text-xl font-bold mb-6">🧠 AI 模型</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest flex items-center uppercase"><span class="badge-cn mr-2">CN AI</span> 国内大模型</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://kimi.moonshot.cn" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center font-medium">Kimi</a>
+                        <a href="https://www.deepseek.com" target="_blank" class="bg-blue-600 text-white p-3 rounded-lg text-sm card-hover text-center font-bold italic">DeepSeek</a>
+                        <a href="https://www.doubao.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">豆包</a>
+                        <a href="https://yiyan.baidu.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">文心一言</a>
+                        <a href="https://tongyi.aliyun.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">通义千问</a>
+                        <a href="https://chatglm.cn" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">智谱清言</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest flex items-center uppercase"><span class="badge-intl mr-2">INTL AI</span> 国际大模型</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://chat.openai.com" target="_blank" class="bg-black text-white p-3 rounded-lg text-sm card-hover text-center">ChatGPT</a>
+                        <a href="https://claude.ai" target="_blank" class="bg-orange-50 p-3 rounded-lg text-sm card-hover border border-orange-200 text-center font-semibold">Claude</a>
+                        <a href="https://gemini.google.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">Gemini</a>
+                        <a href="https://www.midjourney.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">Midjourney</a>
+                        <a href="https://poe.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">Poe</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="category">
-            <h2>国际综合视频 / 流媒体</h2>
-            <div class="links">
-                <a href="https://www.youtube.com" target="_blank">YouTube</a>
-                <a href="https://www.netflix.com" target="_blank">Netflix</a>
-                <a href="https://www.disneyplus.com" target="_blank">Disney+</a>
-                <a href="https://www.primevideo.com" target="_blank">Amazon Prime</a>
-                <a href="https://www.hulu.com" target="_blank">Hulu</a>
-                <a href="https://www.max.com" target="_blank">Max (HBO)</a>
-                <a href="https://www.dailymotion.com" target="_blank">Dailymotion</a>
-                <a href="https://www.vimeo.com" target="_blank">Vimeo</a>
-                <a href="https://www.twitch.tv" target="_blank">Twitch</a>
-                <a href="https://www.facebook.com/watch" target="_blank">Facebook Watch</a>
+        <section id="aivideo" class="mb-16">
+            <h3 class="section-title text-xl font-bold mb-6">🎥 视频生成 AI</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest flex items-center uppercase"><span class="badge-cn mr-2">CN VIDEO AI</span> 国内视频 AI</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://app.klingai.com/cn/" target="_blank" class="bg-blue-50 p-3 rounded-lg text-sm card-hover border border-blue-100 text-center font-bold italic">可灵 Kling</a>
+                        <a href="https://jimeng.jianying.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center font-medium">即梦 AI</a>
+                        <a href="https://www.vidu.cn" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center font-medium">Vidu</a>
+                        <a href="https://chatglm.cn/video" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center text-xs">智谱清影</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest flex items-center uppercase"><span class="badge-intl mr-2">INTL VIDEO AI</span> 国际视频 AI</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://runwayml.com/" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center font-bold uppercase">Runway</a>
+                        <a href="https://lumalabs.ai/dream-machine/" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center text-xs">Luma Dream</a>
+                        <a href="https://pika.art/" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center font-medium">Pika</a>
+                        <a href="https://openai.com/index/sora/" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center font-bold text-pink-500 italic">Sora</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="category">
-            <h2>垂直 / 特色平台</h2>
-            <div class="links">
-                <a href="https://www.vevo.com" target="_blank">Vevo (音乐)</a>
-                <a href="https://www.ted.com/talks" target="_blank">TED Talks (演讲)</a>
-                <a href="https://www.tubi.tv" target="_blank">Tubi (免费影视)</a>
-                <a href="https://www.crackle.com" target="_blank">Crackle (索尼)</a>
-                <a href="https://www.bbc.co.uk/iplayer" target="_blank">BBC iPlayer</a>
-                <a href="https://rutube.ru" target="_blank">RuTube (俄罗斯)</a>
+        <section id="music" class="mb-16">
+            <h3 class="section-title text-xl font-bold mb-6">🎵 音乐与音频</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase flex items-center"><span class="badge-cn mr-2">CN MUSIC</span> 国内音乐</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://y.qq.com" target="_blank" class="glass p-3 rounded text-sm card-hover border border-gray-100 text-center">QQ 音乐</a>
+                        <a href="https://music.163.com" target="_blank" class="glass p-3 rounded text-sm card-hover border border-gray-100 text-center">网易云音乐</a>
+                        <a href="https://www.kugou.com" target="_blank" class="glass p-3 rounded text-sm card-hover border border-gray-100 text-center">酷狗音乐</a>
+                        <a href="https://music.qishui.com" target="_blank" class="glass p-3 rounded text-sm card-hover border border-gray-100 text-center">汽水音乐</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase flex items-center"><span class="badge-intl mr-2">GLOBAL MUSIC</span> 国际音乐</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://www.spotify.com" target="_blank" class="bg-green-600 text-white p-3 rounded text-sm card-hover text-center font-bold tracking-tight">Spotify</a>
+                        <a href="https://music.apple.com" target="_blank" class="glass p-3 rounded text-sm card-hover border border-gray-100 text-center font-medium">Apple Music</a>
+                        <a href="https://suno.com" target="_blank" class="bg-indigo-600 text-white p-3 rounded text-sm card-hover text-center font-bold italic text-xs">Suno AI Music</a>
+                        <a href="https://soundcloud.com" target="_blank" class="glass p-3 rounded text-sm card-hover border border-gray-100 text-center">SoundCloud</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-    </div>
+        <section id="stock" class="mb-16">
+            <h3 class="section-title text-xl font-bold mb-6">🎞️ 影视素材资源</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase flex items-center"><span class="badge-cn mr-2">CN STOCK</span> 国内素材</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://www.vjshi.com" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center">光厂 (VJ师)</a>
+                        <a href="https://www.vcg.com" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center">视觉中国</a>
+                        <a href="https://www.newcger.com" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center font-medium">新 CG 儿</a>
+                        <a href="https://www.aigei.com" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center font-medium">爱给网</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase flex items-center"><span class="badge-intl mr-2">GLOBAL STOCK</span> 国际素材</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://www.pexels.com/videos" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center">Pexels</a>
+                        <a href="https://pixabay.com/videos" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center">Pixabay</a>
+                        <a href="https://artgrid.io" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center font-semibold">ArtGrid</a>
+                        <a href="https://elements.envato.com" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center">Envato</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="data" class="mb-16">
+            <h3 class="section-title text-xl font-bold mb-6">📊 数据导航平台</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase flex items-center"><span class="badge-cn mr-2">CN DATA</span> 国内数据</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://hao.199it.com" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center font-medium italic underline decoration-blue-500">199IT 导航</a>
+                        <a href="https://data.stats.gov.cn" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center">国家数据局</a>
+                        <a href="https://www.newrank.cn" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center">新榜数据</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase flex items-center"><span class="badge-intl mr-2">GLOBAL DATA</span> 全球数据</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://www.kaggle.com/datasets" target="_blank" class="bg-blue-100 p-3 rounded text-xs card-hover border border-blue-200 text-center font-bold text-blue-800">Kaggle</a>
+                        <a href="https://data.worldbank.org" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center">World Bank</a>
+                        <a href="https://datasetsearch.research.google.com" target="_blank" class="glass p-3 rounded text-xs card-hover border border-gray-100 text-center text-[10px]">Google Dataset</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="book" class="mb-16">
+            <h3 class="section-title text-xl font-bold mb-6">📚 读书与知识</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase flex items-center"><span class="badge-cn mr-2">CN READING</span> 国内阅读</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="https://weread.qq.com" target="_blank" class="bg-blue-600 text-white p-3 rounded-lg text-sm card-hover text-center font-bold">微信读书</a>
+                        <a href="https://www.shuge.org" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center font-serif font-bold italic">书格</a>
+                        <a href="https://read.douban.com" target="_blank" class="glass p-3 rounded-lg text-sm card-hover border border-gray-100 text-center">豆瓣阅读</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase flex items-center"><span class="badge-intl mr-2">GLOBAL READING</span> 全球数字图书馆</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
+                        <a href="https://www.gutenberg.org" target="_blank" class="glass p-3 rounded card-hover border border-gray-100 text-center">古腾堡计划</a>
+                        <a href="https://archive.org" target="_blank" class="glass p-3 rounded card-hover border border-gray-100 text-center">Internet Archive</a>
+                        <a href="https://books.google.com" target="_blank" class="glass p-3 rounded card-hover border border-gray-100 text-center">Google Books</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-20 pt-8 border-t border-gray-100 text-center text-gray-300 text-xs">
+            © 2026 月田意意 · 基于 GitHub Pages 构建的极简导航
+        </footer>
+    </main>
 </body>
 </html>
