@@ -7,48 +7,37 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    
     <style>
         :root { font-family: 'Inter', 'Noto Sans SC', sans-serif; }
-        body { background-color: #0f172a; color: #f8fafc; }
+        body { background-color: #09090b; color: #fafafa; scroll-behavior: smooth; }
         
-        /* 隐藏滚动条但保留功能 */
+        /* 隐藏滚动条 */
         ::-webkit-scrollbar { width: 0px; }
-        
-        /* 毛玻璃卡片效果 */
+
+        /* 高级毛玻璃卡片 */
         .glass-card {
-            background: rgba(30, 41, 59, 0.4);
+            background: rgba(24, 24, 27, 0.6);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
         .glass-card:hover {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(99, 102, 241, 0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            background: rgba(39, 39, 42, 0.8);
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
         }
 
-        /* 渐变标题 */
-        .text-gradient {
-            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* 侧边栏活动态引导 */
-        .nav-item {
-            position: relative;
-            transition: color 0.3s;
-        }
-        .nav-item:hover { color: #818cf8; }
-        
-        /* 按钮微妙发光 */
+        /* 链接项样式 */
         .link-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
         }
         .link-item:hover {
             background: rgba(99, 102, 241, 0.1);
@@ -56,184 +45,266 @@
             color: #fff;
         }
 
+        /* 侧边栏微调 */
+        .nav-active { color: #818cf8; background: rgba(99, 102, 241, 0.05); }
+
         /* 标签 */
-        .tag-cn { border: 1px solid #ef4444; color: #ef4444; font-size: 10px; padding: 1px 4px; border-radius: 4px; opacity: 0.8; }
-        .tag-intl { border: 1px solid #3b82f6; color: #3b82f6; font-size: 10px; padding: 1px 4px; border-radius: 4px; opacity: 0.8; }
+        .badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600; letter-spacing: 0.05em; }
+        .badge-cn { color: #f87171; border: 1px solid rgba(248, 113, 113, 0.2); }
+        .badge-intl { color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.2); }
     </style>
 </head>
 <body class="antialiased">
 
-    <aside class="hidden lg:flex flex-col w-72 h-screen fixed left-0 top-0 bg-slate-900/50 border-r border-white/5 p-8 z-50">
-        <div class="mb-12">
-            <h1 class="text-2xl font-bold tracking-tighter text-gradient">月田导航</h1>
-            <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] mt-1">Design by Yuetian</p>
+    <aside class="hidden xl:flex flex-col w-64 h-screen fixed left-0 top-0 bg-[#09090b] border-r border-white/5 p-6 z-50">
+        <div class="mb-10 px-2">
+            <h1 class="text-2xl font-bold tracking-tighter text-white">月田导航</h1>
+            <div class="h-1 w-8 bg-indigo-500 mt-1 rounded-full"></div>
         </div>
         
-        <nav class="flex-1 space-y-6">
-            <div class="space-y-3">
-                <p class="text-[10px] font-bold text-slate-600 uppercase tracking-widest">Navigation</p>
-                <a href="#video" class="nav-item flex items-center text-sm text-slate-400 font-medium"><i data-lucide="play-circle" class="w-4 h-4 mr-3"></i> 视频网站</a>
-                <a href="#creator" class="nav-item flex items-center text-sm text-slate-400 font-medium"><i data-lucide="user-plus" class="w-4 h-4 mr-3"></i> 创作账号</a>
-                <a href="#aimodel" class="nav-item flex items-center text-sm text-slate-400 font-medium"><i data-lucide="cpu" class="w-4 h-4 mr-3"></i> AI 模型</a>
-                <a href="#aivideo" class="nav-item flex items-center text-sm text-slate-400 font-medium"><i data-lucide="video" class="w-4 h-4 mr-3"></i> 视频生成</a>
-                <a href="#music" class="nav-item flex items-center text-sm text-slate-400 font-medium"><i data-lucide="music" class="w-4 h-4 mr-3"></i> 音乐网站</a>
-                <a href="#stock" class="nav-item flex items-center text-sm text-slate-400 font-medium"><i data-lucide="image" class="w-4 h-4 mr-3"></i> 影视素材</a>
-                <a href="#data" class="nav-item flex items-center text-sm text-slate-400 font-medium"><i data-lucide="bar-chart-3" class="w-4 h-4 mr-3"></i> 数据导航</a>
-                <a href="#book" class="nav-item flex items-center text-sm text-slate-400 font-medium"><i data-lucide="book-open" class="w-4 h-4 mr-3"></i> 读书分类</a>
-            </div>
+        <nav class="flex-1 space-y-1 overflow-y-auto">
+            <a href="#video" class="flex items-center px-3 py-2 text-zinc-400 hover:text-white rounded-lg transition-all group">
+                <i data-lucide="play-circle" class="w-4 h-4 mr-3 group-hover:text-indigo-400"></i> 视频网站
+            </a>
+            <a href="#creator" class="flex items-center px-3 py-2 text-zinc-400 hover:text-white rounded-lg transition-all group">
+                <i data-lucide="user-plus" class="w-4 h-4 mr-3 group-hover:text-indigo-400"></i> 创作账号
+            </a>
+            <a href="#aimodel" class="flex items-center px-3 py-2 text-zinc-400 hover:text-white rounded-lg transition-all group">
+                <i data-lucide="brain-circuit" class="w-4 h-4 mr-3 group-hover:text-indigo-400"></i> AI 模型
+            </a>
+            <a href="#aivideo" class="flex items-center px-3 py-2 text-zinc-400 hover:text-white rounded-lg transition-all group">
+                <i data-lucide="clapperboard" class="w-4 h-4 mr-3 group-hover:text-indigo-400"></i> 视频生成
+            </a>
+            <a href="#music" class="flex items-center px-3 py-2 text-zinc-400 hover:text-white rounded-lg transition-all group">
+                <i data-lucide="music" class="w-4 h-4 mr-3 group-hover:text-indigo-400"></i> 音乐网站
+            </a>
+            <a href="#stock" class="flex items-center px-3 py-2 text-zinc-400 hover:text-white rounded-lg transition-all group">
+                <i data-lucide="layers" class="w-4 h-4 mr-3 group-hover:text-indigo-400"></i> 影视素材
+            </a>
+            <a href="#data" class="flex items-center px-3 py-2 text-zinc-400 hover:text-white rounded-lg transition-all group">
+                <i data-lucide="database" class="w-4 h-4 mr-3 group-hover:text-indigo-400"></i> 数据导航
+            </a>
+            <a href="#book" class="flex items-center px-3 py-2 text-zinc-400 hover:text-white rounded-lg transition-all group">
+                <i data-lucide="book-marked" class="w-4 h-4 mr-3 group-hover:text-indigo-400"></i> 读书分类
+            </a>
         </nav>
-
-        <div class="pt-8 border-t border-white/5">
-            <p class="text-[10px] text-slate-600">© 2026 Yuetian Nav</p>
-        </div>
     </aside>
 
-    <main class="lg:ml-72 p-6 lg:p-16">
+    <main class="xl:ml-64 p-6 md:p-12 lg:p-16">
         
-        <header class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-                <h2 class="text-4xl font-semibold tracking-tight">探索世界，<span class="text-indigo-400">高效创作。</span></h2>
-                <p class="text-slate-500 mt-4 max-w-lg leading-relaxed font-light">
-                    为您精选全球顶级内容平台与 AI 工具，让每一个灵感都有落地的可能。
-                </p>
-            </div>
-            <div class="flex items-center space-x-2 text-xs text-slate-400 bg-slate-800/50 px-4 py-2 rounded-full border border-white/5">
-                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <span>资源库实时更新中</span>
-            </div>
+        <header class="mb-20">
+            <h2 class="text-4xl font-bold tracking-tight text-white mb-4">灵感在此汇聚</h2>
+            <p class="text-zinc-500 max-w-2xl font-light leading-relaxed">精心整理的全球顶级内容平台、创作工具与 AI 资源。国内国外，一触即达。</p>
         </header>
 
-        <div class="space-y-24">
+        <div class="space-y-32">
 
             <section id="video">
-                <div class="flex items-center mb-10">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center mr-4 border border-indigo-500/20">
-                        <i data-lucide="play" class="text-indigo-400 w-5 h-5"></i>
-                    </div>
-                    <h3 class="text-2xl font-medium">视频网站</h3>
+                <div class="flex items-center space-x-3 mb-8">
+                    <i data-lucide="monitor-play" class="text-indigo-500 w-6 h-6"></i>
+                    <h3 class="text-xl font-semibold">视频网站</h3>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div>
-                        <h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-6 flex items-center"><span class="tag-cn mr-2">Domestic</span> 综合平台</h4>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                            <a href="https://www.iqiyi.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">爱奇艺</a>
-                            <a href="https://v.qq.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">腾讯视频</a>
-                            <a href="https://www.bilibili.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center font-semibold text-indigo-300 border-indigo-500/30">哔哩哔哩</a>
-                            <a href="https://www.douyin.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">抖音</a>
-                            <a href="https://www.ixigua.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">西瓜视频</a>
-                            <a href="https://tv.cctv.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">央视网</a>
+                        <header class="flex justify-between items-center mb-6"><span class="badge badge-cn">国内平台</span></header>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <a href="https://www.iqiyi.com" target="_blank" class="link-item">爱奇艺</a>
+                            <a href="https://v.qq.com" target="_blank" class="link-item">腾讯视频</a>
+                            <a href="https://www.youku.com" target="_blank" class="link-item">优酷</a>
+                            <a href="https://www.bilibili.com" target="_blank" class="link-item font-medium text-indigo-300">哔哩哔哩</a>
+                            <a href="https://www.acfun.cn" target="_blank" class="link-item text-red-400">AcFun</a>
+                            <a href="https://www.douyin.com" target="_blank" class="link-item">抖音</a>
+                            <a href="https://www.ixigua.com" target="_blank" class="link-item">西瓜视频</a>
+                            <a href="https://tv.cctv.com" target="_blank" class="link-item">央视网</a>
                         </div>
                     </div>
                     <div>
-                        <h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-6 flex items-center"><span class="tag-intl mr-2">Global</span> 国际流媒体</h4>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                            <a href="https://www.youtube.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center text-red-400 font-bold border-red-500/20">YouTube</a>
-                            <a href="https://www.netflix.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">Netflix</a>
-                            <a href="https://www.disneyplus.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">Disney+</a>
-                            <a href="https://www.tiktok.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">TikTok</a>
-                            <a href="https://www.twitch.tv" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">Twitch</a>
-                            <a href="https://www.ted.com/talks" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">TED Talks</a>
+                        <header class="flex justify-between items-center mb-6"><span class="badge badge-intl">国外平台</span></header>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <a href="https://www.youtube.com" target="_blank" class="link-item text-red-500 font-bold">YouTube</a>
+                            <a href="https://www.netflix.com" target="_blank" class="link-item">Netflix</a>
+                            <a href="https://www.disneyplus.com" target="_blank" class="link-item">Disney+</a>
+                            <a href="https://www.tiktok.com" target="_blank" class="link-item">TikTok</a>
+                            <a href="https://www.twitch.tv" target="_blank" class="link-item text-purple-400">Twitch</a>
+                            <a href="https://www.ted.com/talks" target="_blank" class="link-item">TED Talks</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="creator">
+                <div class="flex items-center space-x-3 mb-8">
+                    <i data-lucide="edit-3" class="text-indigo-500 w-6 h-6"></i>
+                    <h3 class="text-xl font-semibold">创作账号后台</h3>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="glass-card p-6 rounded-2xl">
+                        <header class="mb-4 text-xs font-bold text-zinc-600 uppercase tracking-widest">国内后台</header>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <a href="https://mp.weixin.qq.com" target="_blank" class="link-item">微信公众平台</a>
+                            <a href="https://creator.douyin.com" target="_blank" class="link-item">抖音创作者</a>
+                            <a href="https://member.bilibili.com" target="_blank" class="link-item">B站创作中心</a>
+                            <a href="https://creator.xiaohongshu.com" target="_blank" class="link-item">小红书中心</a>
+                            <a href="https://mp.toutiao.com" target="_blank" class="link-item">头条号</a>
+                            <a href="https://baijiahao.baidu.com" target="_blank" class="link-item">百家号</a>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <header class="mb-4 text-xs font-bold text-zinc-600 uppercase tracking-widest">海外后台</header>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <a href="https://studio.youtube.com" target="_blank" class="link-item">YouTube Studio</a>
+                            <a href="https://creator.tiktok.com" target="_blank" class="link-item">TikTok Creator</a>
+                            <a href="https://business.facebook.com" target="_blank" class="link-item">Meta Business</a>
+                            <a href="https://studio.x.com" target="_blank" class="link-item">X (Twitter)</a>
+                            <a href="https://medium.com/me/stats" target="_blank" class="link-item">Medium</a>
+                            <a href="https://substack.com/dashboard" target="_blank" class="link-item">Substack</a>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section id="aimodel">
-                <div class="flex items-center mb-10">
-                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center mr-4 border border-purple-500/20">
-                        <i data-lucide="zap" class="text-purple-400 w-5 h-5"></i>
-                    </div>
-                    <h3 class="text-2xl font-medium">AI 智能模型</h3>
+                <div class="flex items-center space-x-3 mb-8">
+                    <i data-lucide="sparkle" class="text-indigo-500 w-6 h-6"></i>
+                    <h3 class="text-xl font-semibold">AI 模型</h3>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <a href="https://www.deepseek.com" target="_blank" class="glass-card md:col-span-2 p-8 rounded-2xl flex items-center justify-between group">
-                        <div>
-                            <span class="tag-cn mb-4 inline-block">Recommended</span>
-                            <h4 class="text-3xl font-bold text-white mb-2">DeepSeek</h4>
-                            <p class="text-slate-400 text-sm">国产大模型之光，极速且聪明</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="space-y-4">
+                        <span class="badge badge-cn">国内大模型</span>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <a href="https://www.deepseek.com" target="_blank" class="link-item bg-indigo-500/10 border-indigo-500/20 text-indigo-300 font-bold">DeepSeek</a>
+                            <a href="https://kimi.moonshot.cn" target="_blank" class="link-item">Kimi</a>
+                            <a href="https://www.doubao.com" target="_blank" class="link-item">豆包</a>
+                            <a href="https://yiyan.baidu.com" target="_blank" class="link-item">文心一言</a>
+                            <a href="https://tongyi.aliyun.com" target="_blank" class="link-item">通义千问</a>
+                            <a href="https://chatglm.cn" target="_blank" class="link-item">智谱清言</a>
                         </div>
-                        <div class="opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="arrow-up-right" class="w-8 h-8 text-indigo-400"></i></div>
-                    </a>
-                    
-                    <a href="https://chat.openai.com" target="_blank" class="glass-card p-8 rounded-2xl flex flex-col justify-center text-center">
-                        <span class="tag-intl mb-4 mx-auto">Standard</span>
-                        <h4 class="text-2xl font-bold">ChatGPT</h4>
-                    </a>
-
-                    <div class="md:col-span-3 grid grid-cols-2 md:grid-cols-5 gap-3 mt-4">
-                        <a href="https://claude.ai" target="_blank" class="link-item p-4 rounded-xl text-sm text-center font-medium border-orange-500/20">Claude</a>
-                        <a href="https://kimi.moonshot.cn" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">Kimi</a>
-                        <a href="https://www.doubao.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">豆包</a>
-                        <a href="https://yiyan.baidu.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">文心一言</a>
-                        <a href="https://gemini.google.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">Gemini</a>
+                    </div>
+                    <div class="space-y-4">
+                        <span class="badge badge-intl">国外大模型</span>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <a href="https://chat.openai.com" target="_blank" class="link-item bg-white/5 font-bold">ChatGPT</a>
+                            <a href="https://claude.ai" target="_blank" class="link-item text-orange-200">Claude</a>
+                            <a href="https://gemini.google.com" target="_blank" class="link-item">Gemini</a>
+                            <a href="https://www.midjourney.com" target="_blank" class="link-item">Midjourney</a>
+                            <a href="https://huggingface.co" target="_blank" class="link-item">Hugging Face</a>
+                            <a href="https://poe.com" target="_blank" class="link-item">Poe</a>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section id="aivideo">
-                <div class="flex items-center mb-10">
-                    <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center mr-4 border border-pink-500/20">
-                        <i data-lucide="sparkles" class="text-pink-400 w-5 h-5"></i>
-                    </div>
-                    <h3 class="text-2xl font-medium">视频生成 AI</h3>
+                <div class="flex items-center space-x-3 mb-8">
+                    <i data-lucide="video" class="text-indigo-500 w-6 h-6"></i>
+                    <h3 class="text-xl font-semibold">视频生成 AI</h3>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
-                    <a href="https://app.klingai.com/cn/" target="_blank" class="link-item p-4 rounded-xl text-sm text-center font-bold italic text-blue-400 border-blue-500/20">可灵 Kling</a>
-                    <a href="https://runwayml.com/" target="_blank" class="link-item p-4 rounded-xl text-sm text-center font-bold uppercase">Runway</a>
-                    <a href="https://lumalabs.ai/dream-machine/" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">Luma</a>
-                    <a href="https://pika.art/" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">Pika</a>
-                    <a href="https://jimeng.jianying.com" target="_blank" class="link-item p-4 rounded-xl text-sm text-center">即梦 AI</a>
-                    <a href="https://openai.com/index/sora/" target="_blank" class="link-item p-4 rounded-xl text-sm text-center text-pink-400 italic">Sora</a>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="https://app.klingai.com/cn/" target="_blank" class="link-item font-bold">可灵 AI (快手)</a>
+                        <a href="https://jimeng.jianying.com" target="_blank" class="link-item">即梦 AI (字节)</a>
+                        <a href="https://www.vidu.cn" target="_blank" class="link-item">Vidu AI</a>
+                        <a href="https://chatglm.cn/video" target="_blank" class="link-item">智谱清影</a>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="https://runwayml.com/" target="_blank" class="link-item font-bold">Runway</a>
+                        <a href="https://lumalabs.ai/dream-machine/" target="_blank" class="link-item">Luma AI</a>
+                        <a href="https://pika.art/" target="_blank" class="link-item">Pika Labs</a>
+                        <a href="https://openai.com/index/sora/" target="_blank" class="link-item text-pink-400 font-bold">Sora (OpenAI)</a>
+                    </div>
                 </div>
             </section>
 
             <section id="music">
-                <h4 class="text-xs font-bold text-slate-600 uppercase tracking-widest mb-6 border-b border-white/5 pb-2">🎵 音乐与音频</h4>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <a href="https://y.qq.com" target="_blank" class="glass-card p-4 rounded-xl text-sm flex items-center justify-between"><span>QQ 音乐</span><i data-lucide="external-link" class="w-3 h-3 opacity-30"></i></a>
-                    <a href="https://music.163.com" target="_blank" class="glass-card p-4 rounded-xl text-sm flex items-center justify-between"><span>网易云音乐</span><i data-lucide="external-link" class="w-3 h-3 opacity-30"></i></a>
-                    <a href="http://googleusercontent.com/spotify.com/3" target="_blank" class="glass-card p-4 rounded-xl text-sm flex items-center justify-between text-green-400"><span>Spotify</span><i data-lucide="external-link" class="w-3 h-3 opacity-30"></i></a>
-                    <a href="https://suno.com" target="_blank" class="glass-card p-4 rounded-xl text-sm flex items-center justify-between text-indigo-400"><span>Suno AI</span><i data-lucide="external-link" class="w-3 h-3 opacity-30"></i></a>
+                <div class="flex items-center space-x-3 mb-8">
+                    <i data-lucide="music-4" class="text-indigo-500 w-6 h-6"></i>
+                    <h3 class="text-xl font-semibold">音乐网站</h3>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="grid grid-cols-3 gap-3">
+                        <a href="https://y.qq.com" target="_blank" class="link-item">QQ 音乐</a>
+                        <a href="https://music.163.com" target="_blank" class="link-item">网易云</a>
+                        <a href="https://music.qishui.com" target="_blank" class="link-item">汽水音乐</a>
+                    </div>
+                    <div class="grid grid-cols-3 gap-3">
+                        <a href="http://googleusercontent.com/spotify.com/4" target="_blank" class="link-item text-green-400">Spotify</a>
+                        <a href="https://music.apple.com" target="_blank" class="link-item">Apple Music</a>
+                        <a href="https://soundcloud.com" target="_blank" class="link-item">SoundCloud</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="stock">
+                <div class="flex items-center space-x-3 mb-8">
+                    <i data-lucide="clapperboard" class="text-indigo-500 w-6 h-6"></i>
+                    <h3 class="text-xl font-semibold">影视素材</h3>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass-card p-6 rounded-2xl space-y-4">
+                        <div class="badge badge-cn">国内素材库</div>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <a href="https://www.vjshi.com" target="_blank" class="link-item">光厂 (VJ师)</a>
+                            <a href="https://stock.xinpianchang.com" target="_blank" class="link-item">新片场素材</a>
+                            <a href="https://www.newcger.com" target="_blank" class="link-item">新 CG 儿</a>
+                            <a href="https://www.aigei.com" target="_blank" class="link-item text-indigo-400">爱给网</a>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl space-y-4">
+                        <div class="badge badge-intl">国外素材库</div>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <a href="https://www.pexels.com/videos" target="_blank" class="link-item">Pexels (免费)</a>
+                            <a href="https://pixabay.com/videos" target="_blank" class="link-item">Pixabay (免费)</a>
+                            <a href="https://artgrid.io" target="_blank" class="link-item font-bold">ArtGrid</a>
+                            <a href="https://elements.envato.com" target="_blank" class="link-item">Envato</a>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <section id="data">
-                <h4 class="text-xs font-bold text-slate-600 uppercase tracking-widest mb-6 border-b border-white/5 pb-2">📊 数据与分析</h4>
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-                    <a href="https://hao.199it.com" target="_blank" class="link-item p-4 rounded-xl text-xs text-center">199IT 导航</a>
-                    <a href="https://data.stats.gov.cn" target="_blank" class="link-item p-4 rounded-xl text-xs text-center">国家数据局</a>
-                    <a href="https://www.kaggle.com/datasets" target="_blank" class="link-item p-4 rounded-xl text-xs text-center border-blue-500/20">Kaggle</a>
-                    <a href="https://datasetsearch.research.google.com" target="_blank" class="link-item p-4 rounded-xl text-xs text-center">Google Dataset</a>
-                    <a href="https://www.newrank.cn" target="_blank" class="link-item p-4 rounded-xl text-xs text-center">新榜数据</a>
+                <div class="flex items-center space-x-3 mb-8">
+                    <i data-lucide="bar-chart-big" class="text-indigo-500 w-6 h-6"></i>
+                    <h3 class="text-xl font-semibold">数据导航</h3>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-xs">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                        <a href="https://hao.199it.com" target="_blank" class="link-item">199IT 导航</a>
+                        <a href="https://data.stats.gov.cn" target="_blank" class="link-item font-medium">国家数据局</a>
+                        <a href="https://www.newrank.cn" target="_blank" class="link-item">新榜数据</a>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                        <a href="https://www.kaggle.com/datasets" target="_blank" class="link-item font-bold text-blue-400">Kaggle</a>
+                        <a href="https://data.worldbank.org" target="_blank" class="link-item">World Bank</a>
+                        <a href="https://datasetsearch.research.google.com" target="_blank" class="link-item">Google Dataset</a>
+                    </div>
                 </div>
             </section>
 
             <section id="book">
-                <h4 class="text-xs font-bold text-slate-600 uppercase tracking-widest mb-6 border-b border-white/5 pb-2">📚 知识与阅读</h4>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <a href="https://weread.qq.com" target="_blank" class="link-item p-5 rounded-2xl flex flex-col items-center">
-                        <span class="text-lg font-bold">微信读书</span>
-                        <span class="text-[10px] opacity-40 mt-1">WeRead</span>
-                    </a>
-                    <a href="https://www.shuge.org" target="_blank" class="link-item p-5 rounded-2xl flex flex-col items-center font-serif">
-                        <span class="text-lg font-bold">书格</span>
-                        <span class="text-[10px] opacity-40 mt-1">Shuge</span>
-                    </a>
-                    <a href="https://www.gutenberg.org" target="_blank" class="link-item p-5 rounded-2xl flex flex-col items-center">
-                        <span class="text-lg font-bold">Gutenberg</span>
-                        <span class="text-[10px] opacity-40 mt-1">Project</span>
-                    </a>
-                    <a href="https://books.google.com" target="_blank" class="link-item p-5 rounded-2xl flex flex-col items-center">
-                        <span class="text-lg font-bold">Google Books</span>
-                        <span class="text-[10px] opacity-40 mt-1">Search</span>
-                    </a>
+                <div class="flex items-center space-x-3 mb-8">
+                    <i data-lucide="book-open" class="text-indigo-500 w-6 h-6"></i>
+                    <h3 class="text-xl font-semibold">读书分类</h3>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <a href="https://weread.qq.com" target="_blank" class="link-item font-bold">微信读书</a>
+                        <a href="https://www.shuge.org" target="_blank" class="link-item font-serif italic text-indigo-300">书格</a>
+                        <a href="https://read.douban.com" target="_blank" class="link-item">豆瓣阅读</a>
+                        <a href="https://www.qidian.com" target="_blank" class="link-item">起点中文</a>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        <a href="https://www.gutenberg.org" target="_blank" class="link-item">古腾堡计划</a>
+                        <a href="https://archive.org" target="_blank" class="link-item">互联网档案馆</a>
+                        <a href="https://openlibrary.org" target="_blank" class="link-item text-xs">Open Library</a>
+                    </div>
                 </div>
             </section>
 
         </div>
 
+        <footer class="mt-40 py-10 border-t border-white/5 text-center text-zinc-600 text-sm">
+            <p>© 2026 月田导航 · 每一个灵感都值得被善待</p>
+        </footer>
     </main>
 
     <script>
